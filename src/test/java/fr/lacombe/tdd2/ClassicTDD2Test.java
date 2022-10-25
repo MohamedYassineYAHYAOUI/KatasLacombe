@@ -53,7 +53,7 @@ class ClassicTDD2Test {
     }
 
     @Test
-    void given_word_should_return_all_anagrams(){
+    void given_four_letters_word_should_return_all_anagrams(){
         var tdd = new ClassicTDD2();
         var res = tdd.generateAllAnagrams("biro");
 
@@ -75,7 +75,7 @@ class ClassicTDD2Test {
     }
 
     @Test
-    void given_word_should_return_all_anagrams2(){
+    void given_three_letters_word_should_return_all_anagrams(){
         var tdd = new ClassicTDD2();
         var res = tdd.generateAllAnagrams("tio");
         var anagrams = new HashSet<String>();
