@@ -2,6 +2,7 @@ package fr.lacombe.tdd2;
 
 
 import java.text.DecimalFormat;
+import java.util.*;
 
 import static java.lang.Math.round;
 
@@ -32,4 +33,26 @@ public class ClassicTDD2 {
         stats[3] = Math.floor(sum / ((double) values.length) * 100) / 100;
         return stats;
     }
+
+
+    public HashSet<String> generateAllAnagrams(String word){
+        if( word == null || word.isBlank()){
+            return new HashSet<>();
+        }
+        var generatedAnagrams = new HashSet<String>();
+        generateAnagramsTree(Arrays.asList(word.split("")), generatedAnagrams, "");
+        return generatedAnagrams;
+    }
+
+
+    private void generateAnagramsTree(List<String> lettersList, HashSet<String> res, String currentAnagram){
+        if(lettersList.isEmpty()){
+            res.add(currentAnagram);
+            return;
+        }
+        for (String s : lettersList) {
+            generateAnagramsTree(lettersList.stream().filter(l->!l.equals(s)).toList(), res, currentAnagram+s);
+        }
+    }
+
 }
